@@ -24,7 +24,7 @@ def popular_taxi_vendor():
 
     t_env.execute_sql(
         create_table_ddl(
-            "WATERMARK FOR pickupTime AS pickupTime - INTERVAL '30' SECONDS"))
+            "WATERMARK FOR pickupTime AS pickupTime - INTERVAL '3' HOURS"))
     taxi_ride = t_env.from_path('TaxiRide')
     popular_rides = taxi_ride.select(taxi_ride.vendorId, taxi_ride.pickupTime) \
         .window(Slide.over('15.minutes').every('5.minutes').on(taxi_ride.pickupTime).alias('w')) \

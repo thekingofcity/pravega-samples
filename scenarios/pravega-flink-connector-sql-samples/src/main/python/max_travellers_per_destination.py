@@ -22,7 +22,7 @@ def max_travellers_per_destination():
     t_env = StreamTableEnvironment.create(stream_execution_environment=env)
 
     t_env.execute_sql(create_table_ddl(
-            "WATERMARK FOR dropOffTime AS dropOffTime - INTERVAL '30' SECONDS"))
+            "WATERMARK FOR dropOffTime AS dropOffTime - INTERVAL '3' HOURS"))
     taxi_ride = t_env.from_path('TaxiRide')
     no_of_travelers_per_dest = taxi_ride \
         .select(taxi_ride.passengerCount, taxi_ride.dropOffTime, taxi_ride.destLocationZone) \

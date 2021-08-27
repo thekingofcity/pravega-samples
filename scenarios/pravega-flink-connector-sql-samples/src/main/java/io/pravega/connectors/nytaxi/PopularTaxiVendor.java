@@ -39,7 +39,7 @@ public class PopularTaxiVendor extends AbstractHandler {
         // create a TableEnvironment
         StreamTableEnvironment tEnv = StreamTableEnvironment.create(env);
 
-        tEnv.executeSql(createTableDdl("WATERMARK FOR pickupTime AS pickupTime - INTERVAL '30' SECONDS", "popular-vendor"));
+        tEnv.executeSql(createTableDdl("WATERMARK FOR pickupTime AS pickupTime - INTERVAL '3' HOURS", "popular-vendor"));
 
         Table popularRides = tEnv
                 .from("TaxiRide")

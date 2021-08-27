@@ -39,7 +39,7 @@ public class MaxTravellersPerDestination extends AbstractHandler {
         // create a TableEnvironment
         StreamTableEnvironment tEnv = StreamTableEnvironment.create(env);
 
-        tEnv.executeSql(createTableDdl("WATERMARK FOR dropOffTime AS dropOffTime - INTERVAL '30' SECONDS", "max-traveller"));
+        tEnv.executeSql(createTableDdl("WATERMARK FOR dropOffTime AS dropOffTime - INTERVAL '3' HOURS", "max-traveller"));
 
         Table noOfTravelersPerDest = tEnv
                 .from("TaxiRide")

@@ -21,7 +21,7 @@ def popular_destination_query():
 
     t_env.execute_sql(
         create_table_ddl(
-            "WATERMARK FOR pickupTime AS pickupTime - INTERVAL '30' SECONDS"))
+            "WATERMARK FOR pickupTime AS pickupTime - INTERVAL '3' HOURS"))
 
     query = f"""SELECT 
     destLocationId, wstart, wend, cnt 
